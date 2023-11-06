@@ -61,24 +61,24 @@ app.post("/cadastrousuario", async(req, res)=>{
 //criando a segunda model id_produtocozinha	Descrição	Marca	Data fabricação	Quantidade estoque
 const ProdutocozinhaSchema = new mongoose.Schema({
     id_produtocozinha: {type : String, required : true},
-    Descricao: {type : String, required : true},
-    Marca: {type : String, required : true},
-    Datafabricacao	: {type : Date, required : true},
-    Quantidadeestoque: {type : Number, required : true},
+    descricao: {type : String, required : true},
+    marca: {type : String, required : true},
+    datafabricacao	: {type : Date, required : true},
+    quantidadeestoque: {type : Number, required : true},
 });
 
-const Produtocozinha = mongoose.model("Produto De Cozinha", UsuarioSchema);
+const Produtocozinha = mongoose.model("Produto De Cozinha", ProdutocozinhaSchema);
  
 //configurando os roteamentos da model usuario
 app.post("/cadastroprodutocozinha", async(req, res)=>{
-    id_produtocozinha = req.body.id_produtocozinha ,
-    Descricao = req.body.Descricao,
-    Marca = req.body.Marca ,
-    Datafabricacao = req.body.Datafabricacao,
-    Quantidadeestoque = req.body.Quantidadeestoque
+    const  id_produtocozinha = req.body.id_produtocozinha 
+    const descricao = req.body.descricao
+    const marca = req.body.marca 
+    const datafabricacao = req.body.datafabricacao
+    const quantidadeestoque = req.body.quantidadeestoque
  
     //testando se todos os campos foram preenchidos
-    if(id_produtocozinha == null ||	Descricao == null || Marca == null ||	Datafabricacao == null ||	Quantidadeestoque == null ){
+    if(id_produtocozinha == null ||	descricao == null || marca == null ||	datafabricacao == null ||	quantidadeestoque == null ){
         return res.status(400).json({error : "Preencher todos os campos"});
     }
  
@@ -92,10 +92,10 @@ app.post("/cadastroprodutocozinha", async(req, res)=>{
     //como fica no postman pra add
     const produtocozinha = new Produtocozinha({
         id_produtocozinha: id_produtocozinha ,
-        Descricao: Descricao,
-        Marca:  Marca ,
-        Datafabricacao: Datafabricacao,
-        Quantidadeestoque:  Quantidadeestoque
+        descricao: descricao,
+        marca:  marca ,
+        datafabricacao: datafabricacao,
+        quantidadeestoque:  quantidadeestoque
     })
  
  
@@ -107,6 +107,11 @@ app.post("/cadastroprodutocozinha", async(req, res)=>{
     }
  
 });
+
+app.get("/cadastroprodutocozinha", async(req, res)=>{
+    res.sendFile(__dirname +"/produtocozinha.html");
+});
+ 
 
 //rota raiz - inicio do inw por causa da pág html
 app.get("/", async(req, res)=>{
