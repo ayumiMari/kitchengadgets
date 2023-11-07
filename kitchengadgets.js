@@ -28,7 +28,7 @@ const Usuario = mongoose.model("Usuario", UsuarioSchema);
 //configurando os roteamentos da model usuario
 app.post("/cadastrousuario", async(req, res)=>{
     const email = req.body.email;
-    const senha = req.body.senha
+    const senha = req.body.senha;
  
     //testando se todos os campos foram preenchidos
     if(email == null || senha == null){
@@ -63,10 +63,10 @@ const ProdutocozinhaSchema = new mongoose.Schema({
     descricao: {type : String, required : true},
     marca: {type : String, required : true},
     datafabricacao	: {type : Date, required : true},
-    quantidadeestoque: {type : Number, required : true},
+    quantidadeestoque: {type : Number, required : true}
 });
 
-const Produtocozinha = mongoose.model("ProdutoDeCozinha", ProdutocozinhaSchema);
+const Produtocozinha = mongoose.model("produtocozinha", ProdutocozinhaSchema);
  
 //configurando os roteamentos da model produto de cozinha
 app.post("/cadastroprodutocozinha", async(req, res)=>{
@@ -77,7 +77,7 @@ app.post("/cadastroprodutocozinha", async(req, res)=>{
     const quantidadeestoque = req.body.quantidadeestoque
  
     //testando se todos os campos foram preenchidos
-    if(id_produtocozinha == null ||	descricao == null || marca == null ||	datafabricacao == null ||	quantidadeestoque == null ){
+    if(id_produtocozinha == '' ||	descricao == '' || marca == '' ||	datafabricacao == '' ||	quantidadeestoque == '' ){
         return res.status(400).json({error : "Preencher todos os campos"});
     }
  
@@ -111,10 +111,12 @@ app.post("/cadastroprodutocozinha", async(req, res)=>{
  
 });
 
+//rota get do usuario
 app.get("/cadastrousuario", async(req, res)=>{
     res.sendFile(__dirname +"/cadastrousuario.html");
 });
- 
+
+//rota get do produto
 app.get("/cadastroprodutocozinha", async(req, res)=>{
     res.sendFile(__dirname +"/produtocozinha.html");
 });

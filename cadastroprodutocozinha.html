@@ -11,12 +11,12 @@
   </head>
   <body>
     <!-- Logotipo -->
-    <div class="bg-primary text-center mt-3 ">
-      <img src="Yellow and White Minimalist Kitchen Logo.png" width="400px" height="150px" />
-    </div>
+    <div class="bg-primary text-center mt-4 ">
+      <img src="logo1.png" width="300px" height="150px" />
+  </div>
 
     <!-- Barra de Navegação -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
       <div class="container">
         <a class="navbar-brand" href="index.html">KitchenGadgets</a>
         <button
@@ -44,34 +44,33 @@
         </div>
       </div>
     </nav>
-
+    <form action="/cadastroprodutocozinha" method="post">
     <div class="container mt-5">
         <h1>Cadastro do Produto</h1>
-        <form action="/cadastroprodutocozinha.html" method="post"> <!--rota para inserir os dados pelo site-->
+        <form action="/cadastroprodutocozinha" method="post"> <!--rota para inserir os dados pelo site-->
             <div class="form-group">
                 <label for="id">Id do Produto:</label>
-                <input type="number" class="form-control" id="id" name="id" placeholder="id">
+                <input type="id" class="form-control" id="id" name="id" placeholder="id">
             </div>
             <div class="form-group">
-                <label for="text">Descrição:</label>
-                <input type="text" class="form-control" id="Descrição" name="Descrição" placeholder="Descrição">
+                <label for="descricao">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" name="descricao" placeholder="descricao">
             </div>
             <div class="form-group">
-                <label for="text">Marca:</label>
+                <label for="marca">Marca:</label>
                 <input type="text" class="form-control" id="marca" name="marca" placeholder="marca">
             </div>
             <div class="form-group">
-                <label for="date">Data de Fabricação:</label>
+                <label for="data">Data de Fabricação:</label>
                 <input type="date" class="form-control" id="data" name="data">
             </div>
             <div class="form-group">
                 <label for="numero">Quantidade no Estoque:</label>
-                <input type="number" class="form-control" id="numero" name="numero" placeholder="Número">
+                <input type="number" class="form-control" id="numero" name="numero" placeholder="numero">
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
     </div>
-    <br>
     <!-- Rodapé -->
     <footer class="bg-primary text-white text-center py-3 fixed-bottom">
       <p>&copy; Espero que tenham gostado da Loja e voltem sempre.</p>
