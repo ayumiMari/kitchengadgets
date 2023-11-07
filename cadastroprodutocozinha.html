@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loja de Utensílios de Cozinha</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- Logotipo -->
+    <div class="bg-primary text-center mt-3 ">
+      <img src="Yellow and White Minimalist Kitchen Logo.png" width="400px" height="150px" />
+    </div>
+
+    <!-- Barra de Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">KitchenGadgets</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="cadastrousuario.html">Entrar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cadastroprodutocozinha.html"
+                >Cadastro Produto</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Cadastro do Produto</h1>
+        <form action="/cadastroprodutocozinha.html" method="post"> <!--rota para inserir os dados pelo site-->
+            <div class="form-group">
+                <label for="id">Id do Produto:</label>
+                <input type="number" class="form-control" id="id" name="id" placeholder="id">
+            </div>
+            <div class="form-group">
+                <label for="text">Descrição:</label>
+                <input type="text" class="form-control" id="Descrição" name="Descrição" placeholder="Descrição">
+            </div>
+            <div class="form-group">
+                <label for="text">Marca:</label>
+                <input type="text" class="form-control" id="marca" name="marca" placeholder="marca">
+            </div>
+            <div class="form-group">
+                <label for="date">Data de Fabricação:</label>
+                <input type="date" class="form-control" id="data" name="data">
+            </div>
+            <div class="form-group">
+                <label for="numero">Quantidade no Estoque:</label>
+                <input type="number" class="form-control" id="numero" name="numero" placeholder="Número">
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+    <br>
+    <!-- Rodapé -->
+    <footer class="bg-primary text-white text-center py-3 fixed-bottom">
+      <p>&copy; Espero que tenham gostado da Loja e voltem sempre.</p>
+    </footer>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

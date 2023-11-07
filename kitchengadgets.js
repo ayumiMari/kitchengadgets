@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
  
  
-//configurando o roteamento para teste no postman
+//configurando o roteamento para o postman
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -17,7 +17,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/kitchengadgets',
     serverSelectionTimeoutMS : 20000
 });
  
-//criando a model/collection do seu projeto- começo da model usuario
+//criando a model usuario
 const UsuarioSchema = new mongoose.Schema({
     email : {type : String, required : true},
     senha : { type : String}
@@ -42,7 +42,6 @@ app.post("/cadastrousuario", async(req, res)=>{
         return res.status(400).json({error : "Esse email já está registrado no sistema."});
     }
  
-    //como fica no postman pra add
     const usuario = new Usuario({
         email : email,
         senha : senha
@@ -58,7 +57,7 @@ app.post("/cadastrousuario", async(req, res)=>{
  
 });
 
-//criando a segunda model id_produtocozinha	Descrição	Marca	Data fabricação	Quantidade estoque
+//criando a segunda model produto de cozinha
 const ProdutocozinhaSchema = new mongoose.Schema({
     id_produtocozinha: {type : String, required : true},
     descricao: {type : String, required : true},
@@ -67,9 +66,9 @@ const ProdutocozinhaSchema = new mongoose.Schema({
     quantidadeestoque: {type : Number, required : true},
 });
 
-const Produtocozinha = mongoose.model("Produto De Cozinha", ProdutocozinhaSchema);
+const Produtocozinha = mongoose.model("ProdutoDeCozinha", ProdutocozinhaSchema);
  
-//configurando os roteamentos da model usuario
+//configurando os roteamentos da model produto de cozinha
 app.post("/cadastroprodutocozinha", async(req, res)=>{
     const  id_produtocozinha = req.body.id_produtocozinha 
     const descricao = req.body.descricao
@@ -89,7 +88,11 @@ app.post("/cadastroprodutocozinha", async(req, res)=>{
         return res.status(400).json({error : "Esse produto já foi cadastrado no sistema."});
     }
  
-    //como fica no postman pra add
+    if(quantidadeestoque > 27 || quantidadeestoque <= 0 ){
+        return res.status(400).json({error : "O estoque apenas pode ser inserido com numeros maior que 0 e menor que 27"});
+    }
+ 
+ 
     const produtocozinha = new Produtocozinha({
         id_produtocozinha: id_produtocozinha ,
         descricao: descricao,
@@ -108,17 +111,20 @@ app.post("/cadastroprodutocozinha", async(req, res)=>{
  
 });
 
+app.get("/cadastrousuario", async(req, res)=>{
+    res.sendFile(__dirname +"/cadastrousuario.html");
+});
+ 
 app.get("/cadastroprodutocozinha", async(req, res)=>{
     res.sendFile(__dirname +"/produtocozinha.html");
 });
- 
 
-//rota raiz - inicio do inw por causa da pág html
+//rota raiz - inicio do inw 
 app.get("/", async(req, res)=>{
     res.sendFile(__dirname +"/index.html");
 });
  
-//configurando a porta - pra ler que vc ta usando a porta 3000 no mongo e no postman
+//configurando a porta 3000
 app.listen(port, ()=>{
     console.log(`Servidor rodando na porta ${port}`);
 });
